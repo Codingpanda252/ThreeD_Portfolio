@@ -1,0 +1,262 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: #333;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/images/Background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+    transition: filter 0.3s;
+}
+
+body.blur-background::before {
+    filter: blur(2px);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.header-name {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+}
+
+#intro-texts {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    z-index: 1;
+}
+
+.scroll-text {
+    font-size: 4em;
+    width: 100%;
+    white-space: nowrap;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#scroll-text1 {
+    display: flex;
+    justify-content: center;
+    gap: 0.1em;
+    animation: moveTextFromRight 5s ease forwards;
+}
+
+#scroll-text2 {
+    animation: moveTextFromLeft 5s ease forwards 5s;
+}
+
+#scroll-text3 {
+    animation: zoomText 5s ease forwards 10s;
+}
+
+@keyframes moveTextFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveTextFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomText {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.letter {
+    font-size: 4em;
+    font-weight: bold;
+    background: linear-gradient(45deg, #9d1f51, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.5s ease;
+}
+
+.letter:hover {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding: 20px;
+    text-align: center;
+}
+
+.project:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+}
+
+.project-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tech-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.tech-logo {
+    width: 50px;
+    height: auto;
+    margin: 0 10px; 
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.tech-logo:hover {
+    transform: scale(1.2); 
+    opacity: 0.7; 
+}
+
+@media only screen and (max-width: 600px) {
+    .scroll-text {
+        font-size: 2em;
+    }
+
+    .letter {
+        font-size: 1em;
+    }
+
+    header {
+        font-size: 1.5em;
+    }
+
+    .project {
+        width: 100%;
+        height: auto;
+    }
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: relative;
+    z-index: 1;
+}
